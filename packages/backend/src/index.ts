@@ -35,6 +35,7 @@ backend.add(import('@backstage/plugin-search-backend-module-explore'));
 backend.add(import('@backstage/plugin-techdocs-backend'));
 backend.add(import('./extensions/docsBuildStrategy'));
 backend.add(import('@backstage-community/plugin-todo-backend'));
+backend.add(import('@backstage-community/plugin-rbac-backend'));
 
 backend.add(import('@backstage/plugin-events-backend'));
 backend.add(import('@backstage/plugin-signals-backend'));

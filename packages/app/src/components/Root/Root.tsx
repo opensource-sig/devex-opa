@@ -11,10 +11,7 @@ import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
 import { NavLink } from 'react-router-dom';
 import { GraphiQLIcon } from '@backstage-community/plugin-graphiql';
-import {
-  Settings as SidebarSettings,
-  UserSettingsSignInAvatar,
-} from '@backstage/plugin-user-settings';
+import { Settings as SidebarSettings } from '@backstage/plugin-user-settings';
 import { SidebarSearchModal } from '@backstage/plugin-search';
 import {
   Sidebar,
@@ -25,6 +22,7 @@ import {
   SidebarSpace,
   SidebarGroup,
   useSidebarOpenState,
+  SidebarSubmenu,
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -35,6 +33,8 @@ import CategoryIcon from '@material-ui/icons/Category';
 import { MyGroupsSidebarItem } from '@backstage/plugin-org';
 import GroupIcon from '@material-ui/icons/People';
 import { NotificationsSidebarItem } from '@backstage/plugin-notifications';
+import { Administration } from '@backstage-community/plugin-rbac';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 const useSidebarLogoStyles = makeStyles<Theme, { themeId: string }>({
   root: {
@@ -104,12 +104,13 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
       <SidebarDivider />
       <NotificationsSidebarItem />
       <SidebarDivider />
-      <SidebarGroup
-        label="Settings"
-        icon={<UserSettingsSignInAvatar />}
-        to="/settings"
-      >
-        <SidebarSettings />
+      <SidebarGroup label="Administration" icon={<SupervisorAccountIcon />}>
+        <SidebarItem icon={SupervisorAccountIcon} text="Administration">
+          <SidebarSubmenu title="Administration">
+            <Administration />
+            <SidebarSettings />
+          </SidebarSubmenu>
+        </SidebarItem>
       </SidebarGroup>
     </Sidebar>
     {children}

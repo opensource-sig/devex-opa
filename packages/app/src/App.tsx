@@ -57,6 +57,7 @@ import {
 } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { Mermaid } from 'backstage-plugin-techdocs-addon-mermaid';
 import { SignalsDisplay } from '@backstage/plugin-signals';
+import { RbacPage } from '@backstage-community/plugin-rbac';
 
 const app = createApp({
   apis,
@@ -176,6 +177,7 @@ const routes = (
     />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/notifications" element={<NotificationsPage />} />
+    <Route path="/rbac" element={<RbacPage />} />;
   </FlatRoutes>
 );
 
